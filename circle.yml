@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 0.10.28
+  #services:
+  #  - docker
+
+dependencies:
+  override:
+    - npm install
+    - bower install
+test:
+  override:
+    - ./node_modules/.bin/gulp test
+    - cp coverage/test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml
