@@ -5,10 +5,13 @@ machine:
   #  - docker
 
 dependencies:
+  cache_directories:
+    - node_modules
+    - bower_components
   override:
     - npm install
     - bower install
 test:
   override:
-    - ./node_modules/.bin/gulp test
+    - gulp test && gulp build
     - cp coverage/test-results.xml $CIRCLE_TEST_REPORTS/test-results.xml
